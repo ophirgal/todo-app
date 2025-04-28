@@ -1,0 +1,121 @@
+ul {
+    height: 500px;
+    width: 400px;
+    overflow: auto;
+    background-color: rgba(20,20,200, 0.2);
+}
+/* General Body Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 40px;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+h1 {
+    font-size: 36px;
+    color: #333;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+/* Flash Messages */
+.flash-success {
+    color: green;
+    font-weight: bold;
+    text-align: center;
+}
+
+.flash-error {
+    color: red;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Container for Left and Right Layout */
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+}
+
+/* Left-side Styling */
+.left-side {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+input[type="text"],
+input[type="file"] {
+    padding: 10px;
+    margin: 10px 0;
+    width: 250px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+}
+
+button[type="submit"] {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 250px;
+}
+
+button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+/* Right-side Styling */
+.right-side {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    width: 100%;
+}
+
+ul li {
+    background-color: #fff;
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+}
+
+ul li form button {
+    background-color: #f44336;
+    border: none;
+    padding: 5px 15px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+ul li form button:hover {
+    background-color: #e53935;
+}

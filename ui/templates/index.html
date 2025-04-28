@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="left-side">
+            <h1>Task Manager</h1>
+
+            {% if session.username %} <h2> Welcome {{ session.username }}! </h2> {% endif %}
+
+            {% include "description.html" %}
+
+            <!-- Flash Messages -->
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            {% for category, message in messages %}
+            <p class="flash-{{ category }}">{{ message }}</p>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+
+            <!-- Form: Create a new Task -->
+            <form action="{{ url_for('tasks.add_task') }}" method="POST" enctype="multipart/form-data">
+                <input type="text" name="task" placeholder="Enter a new task">
+                <input type="file" name="imageFile" accept=".jpg .png .jpeg"/>
+                <button type="submit">Add Task</button>
+            </form>
+
+            <!-- Form: Search for tasks -->
+            <form action="{{ url_for('search_tasks') }}" method="GET">
+                <input type="text" name="searchText" placeholder="Search for tasks by name...">
+                <button type="submit">Search</button>
+            </form>
+        </div>
+
+        <div class="right-side">
+            <!-- Task List -->
+            <h2>Tasks:</h2>
+            <ul>
+                {% for task in tasks %}
+                <li>
+                    {{ task[1] }}
+                    <img src="{{ url_for('tasks.get_image', filename=task[2]) }}" />
+                    <form action="{{ url_for('tasks.delete_task', id=task[0]) }}" method="POST">
+                        <button type="submit">Delete</button>
+                    </form>
+                </li> <!-- task[1] is the title -->
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+</body>
+
+</html>
